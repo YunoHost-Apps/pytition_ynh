@@ -1,68 +1,54 @@
-# Example app pour YunoHost
+# Pytition pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/example.svg)](https://dash.yunohost.org/appci/app/example) ![](https://ci-apps.yunohost.org/ci/badges/example.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/example.maintain.svg)  
-[![Installer Example app avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=example)
+[![Niveau d'intégration](https://dash.yunohost.org/integration/pytition.svg)](https://dash.yunohost.org/appci/app/pytition) ![](https://ci-apps.yunohost.org/ci/badges/pytition.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/pytition.maintain.svg)  
+[![Installer Pytition avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pytition)
 
 *[Read this readme in english.](./README.md)*
 *[Lire ce readme en français.](./README_fr.md)*
 
-> *Ce package vous permet d'installer Example app rapidement et simplement sur un serveur YunoHost.
+> *Ce package vous permet d'installer Pytition rapidement et simplement sur un serveur YunoHost.
 Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
 
 ## Vue d'ensemble
 
-Some long and extensive description of what the app is and does, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Pytition permet d'héberger des pétitions respectueuses de la vie privée sur votre propre serveur.
 
 ### Features
 
-- Ut enim ad minim veniam, quis nostrud exercitation ullamco ;
-- Laboris nisi ut aliquip ex ea commodo consequat ;
-- Duis aute irure dolor in reprehenderit in voluptate ;
-- Velit esse cillum dolore eu fugiat nulla pariatur ;
-- Excepteur sint occaecat cupidatat non proident, sunt in culpa."
+- Hébergez des pétitions sans compromettre l'identité de vos signataires
+- Pas de tracking : CSS, JS et autres ressources sont auto-hébergées. Pas d'usage de CDN.
+- Interface réactive : fonctione sur smartphones et tablettes autant que sur ordinateur.
+- Interface traduite : anglais, français, italien, occitan, espagnol.
+- Vous pouvez prévisualiser les pétitions avant publication.
+- Simple à utiliser grâce à des éditeurs TinyMCE (comme Wordpress)
+- Vous pouvez exporter les signatures via CSV.
 
 
-**Version incluse :** 1.0~ynh1
+**Version incluse :** 2.4~ynh1
 
-**Démo :** https://demo.example.com
-
-## Captures d'écran
-
-![](./doc/screenshots/example.jpg)
+**Démo :** https://demo.pytition.org
 
 ## Avertissements / informations importantes
 
-* Any known limitations, constrains or stuff not working, such as (but not limited to):
-    * requiring a full dedicated domain ?
-    * architectures not supported ?
-    * not-working single-sign on or LDAP integration ?
-    * the app requires an important amount of RAM / disk / .. to install or to work properly
-    * etc...
-
-* Other infos that people should be aware of, such as:
-    * any specific step to perform after installing (such as manually finishing the install, specific admin credentials, ...)
-    * how to configure / administrate the application if it ain't obvious
-    * upgrade process / specificities / things to be aware of ?
-    * security considerations ?
+* Pas de support du Single-Sign-On ou du LDAP Yunohost.
 
 ## Documentations et ressources
 
-* Site officiel de l'app : https://example.com
-* Documentation officielle utilisateur : https://yunohost.org/apps
-* Documentation officielle de l'admin : https://yunohost.org/packaging_apps
-* Dépôt de code officiel de l'app : https://some.forge.com/example/example
-* Documentation YunoHost pour cette app : https://yunohost.org/app_example
-* Signaler un bug : https://github.com/YunoHost-Apps/example_ynh/issues
+* Site officiel de l'app : https://github.com/pytition/Pytition
+* Documentation officielle de l'admin : https://pytition.readthedocs.io/en/latest/
+* Dépôt de code officiel de l'app : https://github.com/pytition/Pytition
+* Documentation YunoHost pour cette app : https://yunohost.org/app_pytition
+* Signaler un bug : https://github.com/YunoHost-Apps/pytition_ynh/issues
 
 ## Informations pour les développeurs
 
-Merci de faire vos pull request sur la [branche testing](https://github.com/YunoHost-Apps/example_ynh/tree/testing).
+Merci de faire vos pull request sur la [branche testing](https://github.com/YunoHost-Apps/pytition_ynh/tree/testing).
 
 Pour essayer la branche testing, procédez comme suit.
 ```
-sudo yunohost app install https://github.com/YunoHost-Apps/example_ynh/tree/testing --debug
+sudo yunohost app install https://github.com/YunoHost-Apps/pytition_ynh/tree/testing --debug
 ou
-sudo yunohost app upgrade example -u https://github.com/YunoHost-Apps/example_ynh/tree/testing --debug
+sudo yunohost app upgrade pytition -u https://github.com/YunoHost-Apps/pytition_ynh/tree/testing --debug
 ```
 
 **Plus d'infos sur le packaging d'applications :** https://yunohost.org/packaging_apps
