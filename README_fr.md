@@ -28,6 +28,10 @@ Pytition permet d'héberger des pétitions respectueuses de la vie privée sur v
 
 **Démo :** https://demo.pytition.org
 
+## Captures d'écran
+
+![](./doc/screenshots/stop_doing_teams.webp)
+
 ## Avertissements / informations importantes
 
 * Pas de support du Single-Sign-On ou du LDAP Yunohost.
