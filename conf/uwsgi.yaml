@@ -1,0 +1,27 @@
+uwsgi:
+    # Who will run the code
+    uid: __APP__
+    gid: __APP__
+
+    # Number of workers
+    workers: 10
+
+    # The right granted on the created socket
+    chmod-socket: 666
+    vacuum: true
+
+    # Plugin to use and interpretor config
+    master: true
+    plugin: python3
+
+    # Virtualenv and python path
+    virtualenv: __FINALPATH__/venv
+    pythonpath: __FINALPATH__
+    chdir: __FINALPATH__/pytition/pytition
+    env: DJANGO_SETTINGS_MODULE=pytition.settings.config
+
+    socket: /run/__APP__/app.socket
+    mount: /__PATH__=pytition/wsgi.py
+    manage-script-name: true
+
+    logto: /var/log/__APP__/__APP__-uwsgi.log

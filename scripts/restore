@@ -121,7 +121,7 @@ ynh_systemd_action --action=restart --service_name=fail2ban
 ynh_script_progression --message="Reinstalling dependencies..." --time --weight=1
 
 # Define and install dependencies
-ynh_install_app_dependencies $pkg_dependencies
+ynh_install_app_dependencies "${pkg_dependencies[@]}"
 
 #=================================================
 # RESTORE THE MYSQL DATABASE
