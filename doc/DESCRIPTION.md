@@ -1,9 +1,11 @@
-Some long and extensive description of what the app is and does, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Pytition is an application for privacy-friendly online petitions you can host on your own server.
 
 ### Features
 
-- Ut enim ad minim veniam, quis nostrud exercitation ullamco ;
-- Laboris nisi ut aliquip ex ea commodo consequat ;
-- Duis aute irure dolor in reprehenderit in voluptate ;
-- Velit esse cillum dolore eu fugiat nulla pariatur ;
-- Excepteur sint occaecat cupidatat non proident, sunt in culpa."
+- Host petitions without compromising the privacy of your signatories.
+- No tracking, ever: CSS, JS and all resources are self-hosted. Pytition does not use CDN.
+- Responsive UI: works well on phones/tablets/laptops/desktops.
+- Multi-lingual UI with i18n: English, French, Italian, Occitan, Spanish.
+- You can pre-visualize petitions before publishing them.
+- Easy to use: petition content is typed-in via TinyMCE editors (like WordPress).
+- You can export signatures in CSV format.

@@ -1,25 +1,25 @@
 {
-    "name": "Example app",
-    "id": "example",
+    "name": "Pytition",
+    "id": "pytition",
     "packaging_format": 1,
     "description": {
-        "en": "Explain in *a few (10~15) words* the purpose of the app or what it actually does (it is meant to give a rough idea to users browsing a catalog of 100+ apps)",
-        "fr": "Expliquez en *quelques* (10~15) mots l'utilité de l'app ou ce qu'elle fait (l'objectif est de donner une idée grossière pour des utilisateurs qui naviguent dans un catalogue de 100+ apps)"
+        "en": "Host privacy-friendly online petitions",
+        "fr": "Hébergez des pétitions en ligne respectueuses de la vie privée"
     },
-    "version": "1.0~ynh1",
+    "version": "2.4~ynh1",
     "url": "https://example.com",
     "upstream": {
-        "license": "free",
-        "website": "https://example.com",
-        "demo": "https://demo.example.com",
-        "admindoc": "https://yunohost.org/packaging_apps",
-        "userdoc": "https://yunohost.org/apps",
-        "code": "https://some.forge.com/example/example"
+        "license": "BSD-3",
+        "website": "https://github.com/pytition/Pytition",
+        "demo": "https://demo.pytition.org",
+        "admindoc": "https://pytition.readthedocs.io/en/latest/",
+        "userdoc": "",
+        "code": "https://github.com/pytition/Pytition"
     },
-    "license": "free",
+    "license": "BSD-3",
     "maintainer": {
-        "name": "John doe",
-        "email": "john.doe@example.com"
+        "name": "Salamandar",
+        "email": "felix@piedallu.me"
     },
     "requirements": {
         "yunohost": ">= 4.3.0"
@@ -27,7 +27,6 @@
     "multi_instance": true,
     "services": [
         "nginx",
-        "php7.3-fpm",
         "mysql"
     ],
     "arguments": {
@@ -39,8 +38,8 @@
             {
                 "name": "path",
                 "type": "path",
-                "example": "/example",
-                "default": "/example"
+                "example": "/pytition",
+                "default": "/pytition"
             },
             {
                 "name": "is_public",
@@ -58,15 +57,11 @@
                 "default": "fr"
             },
             {
-                "name": "admin",
-                "type": "user"
-            },
-            {
                 "name": "password",
                 "type": "password",
                 "help": {
-                    "en": "Use the help field to add an information for the admin about this question.",
-                    "fr": "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
+                    "en": "Administrator password (username is admin)",
+                    "fr": "Mot de passe administrateur (l'identifiant est admin)"
                 }
             }
         ]
