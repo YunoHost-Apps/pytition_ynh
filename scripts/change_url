@@ -26,13 +26,13 @@ app=$YNH_APP_INSTANCE_NAME
 #=================================================
 ynh_script_progression --message="Loading installation settings..." --time --weight=1
 
-# Needed for helper "ynh_add_nginx_config"
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 
 # Add settings here as needed by your application
-#db_name=$(ynh_app_setting_get --app=$app --key=db_name)
-#db_user=$db_name
-#db_pwd=$(ynh_app_setting_get --app=$app --key=db_pwd)
+db_name=$(ynh_app_setting_get --app=$app --key=db_name)
+db_user=$db_name
+db_pwd=$(ynh_app_setting_get --app=$app --key=db_pwd)
+secret_key=$(generate_secret_key)
 
 #=================================================
 # BACKUP BEFORE CHANGE URL THEN ACTIVE TRAP
@@ -108,8 +108,12 @@ fi
 #=================================================
 # SPECIFIC MODIFICATIONS
 #=================================================
-# ...
+# Reedit configuration files
 #=================================================
+ynh_script_progression --message="Updating app's configuration..." --time --weight=1
+
+ynh_add_config --template="../conf/config.py" --destination="$final_path/pytition/pytition/pytition/settings/config.py"
+ynh_add_config --template="../conf/uwsgi.yaml" --destination="/etc/uwsgi/apps-available/$app.yaml"
 
 #=================================================
 # GENERIC FINALISATION

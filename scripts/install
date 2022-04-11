@@ -153,13 +153,7 @@ chown -R $app:www-data "/var/log/$app"
 # ADD A CONFIGURATION
 #=================================================
 ynh_script_progression --message="Adding configuration files..." --time --weight=1
-
-secret_key=$(
-    set +o nounset
-    source "${final_path}/venv/bin/activate"
-    set -o nounset
-    python3 -c "from django.core.management.utils import get_random_secret_key as g; print(g())"
-)
+secret_key=$(generate_secret_key)
 
 config_path="$final_path/pytition/pytition/pytition/settings/config.py"
 ynh_add_config --template="../conf/config.py" --destination="$config_path"
