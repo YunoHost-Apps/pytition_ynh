@@ -9,7 +9,7 @@ User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__
 RuntimeDirectory=__APP__
-ExecStart=uwsgi --yaml /etc/uwsgi/apps-available/__APP__.yaml --die-on-term
+ExecStart=uwsgi --yaml __FINALPATH__/uwsgi.yaml --die-on-term
 
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit

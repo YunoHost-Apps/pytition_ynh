@@ -164,9 +164,9 @@ ynh_add_config --template="../conf/config.py" --destination="$config_path"
 chmod 400 "$config_path"
 chown $app:$app "$config_path"
 
-ynh_add_config --template="../conf/uwsgi.yaml" --destination="/etc/uwsgi/apps-available/$app.yaml"
-chmod 400 "/etc/uwsgi/apps-available/$app.yaml"
-chown $app:$app "/etc/uwsgi/apps-available/$app.yaml"
+ynh_add_config --template="../conf/uwsgi.yaml" --destination="$final_path/uwsgi.yaml"
+chmod 400 "$final_path/uwsgi.yaml"
+chown $app:$app "$final_path/uwsgi.yaml"
 
 #=================================================
 # Run app configuration

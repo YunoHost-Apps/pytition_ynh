@@ -113,7 +113,7 @@ fi
 ynh_script_progression --message="Updating app's configuration..." --time --weight=1
 
 ynh_add_config --template="../conf/config.py" --destination="$final_path/pytition/pytition/pytition/settings/config.py"
-ynh_add_config --template="../conf/uwsgi.yaml" --destination="/etc/uwsgi/apps-available/$app.yaml"
+ynh_add_config --template="../conf/uwsgi.yaml" --destination="$final_path/uwsgi.yaml"
 
 #=================================================
 # GENERIC FINALISATION

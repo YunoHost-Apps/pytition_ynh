@@ -73,12 +73,6 @@ ynh_backup --src_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 ynh_backup --src_path="/etc/systemd/system/$app.service"
 
 #=================================================
-# BACKUP VARIOUS FILES
-#=================================================
-
-ynh_backup --src_path="/etc/uwsgi/apps-available/$app.yaml"
-
-#=================================================
 # BACKUP THE MYSQL DATABASE
 #=================================================
 ynh_print_info --message="Backing up the MySQL database..."
