@@ -9,14 +9,14 @@
     "version": "2.4~ynh1",
     "url": "https://example.com",
     "upstream": {
-        "license": "BSD-3",
+        "license": "BSD-3-Clause",
         "website": "https://github.com/pytition/Pytition",
         "demo": "https://demo.pytition.org",
         "admindoc": "https://pytition.readthedocs.io/en/latest/",
         "userdoc": "",
         "code": "https://github.com/pytition/Pytition"
     },
-    "license": "BSD-3",
+    "license": "BSD-3-Clause",
     "maintainer": {
         "name": "Salamandar",
         "email": "felix@piedallu.me"
@@ -44,7 +44,11 @@
             {
                 "name": "is_public",
                 "type": "boolean",
-                "default": true
+                "default": true,
+                "help": {
+                    "en": "If private, only Yunohost users will be able to sign petitions.",
+                    "fr": "Si privé, seuls des utilisateurs Yunohost pourront signer des pétitions."
+                }
             },
             {
                 "name": "language",
