@@ -120,7 +120,7 @@ virtualenv --python=python3 --system-site-packages "${final_path}/venv"
 #=================================================
 # CREATE DATA DIRECTORY
 #=================================================
-ynh_script_progression --message="Creating a data directory..." --time --weight=1
+ynh_script_progression --message="Creating the log directory..." --time --weight=1
 
 mkdir -p "/var/log/$app"
 chmod 750 "/var/log/$app"
@@ -186,7 +186,7 @@ ynh_exec_as $app bash -c "
     python3 manage.py createsuperuser --noinput --username admin --email 'admin@$domain'
 "
 
-chmod 400 "$final_path/static"
+chmod 750 "$final_path/static"
 chown -R $app:www-data "$final_path/static"
 
 #=================================================

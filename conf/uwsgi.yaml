@@ -21,7 +21,7 @@ uwsgi:
     env: DJANGO_SETTINGS_MODULE=pytition.settings.config
 
     socket: /run/__APP__/app.socket
-    mount: /__PATH__=pytition/wsgi.py
+    mount: __PATH__=pytition/wsgi.py
     manage-script-name: true
 
     logto: /var/log/__APP__/__APP__-uwsgi.log
