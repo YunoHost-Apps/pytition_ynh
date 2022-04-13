@@ -1,7 +1,6 @@
-SOURCE_URL=url of app's source
-SOURCE_SUM=sha256 checksum
+SOURCE_URL=https://github.com/pytition/Pytition/archive/refs/tags/v2.4.tar.gz
+SOURCE_SUM=466c788139fc90049a42d084472df36ea0f15b46766777f248ce989e3dbebcc4
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=true
-SOURCE_FILENAME=
 SOURCE_EXTRACT=true
