@@ -20,6 +20,8 @@ domain=$(ynh_app_setting_get --app=$app --key=domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 db_name=$(ynh_app_setting_get --app=$app --key=db_name)
+db_user=$db_name
+db_pwd=$(ynh_app_setting_get --app=$app --key=mysqlpwd)
 
 #=================================================
 # CHECK VERSION
@@ -131,13 +133,13 @@ ynh_install_app_dependencies "${pkg_dependencies[@]}"
 #=================================================
 ynh_script_progression --message="Upgrading python dependencies..." --weight=1
 
-python3 -m venv --upgrade ENV_DIR
 (
     set +o nounset
     source "${final_path}/venv/bin/activate"
     set -o nounset
 
-	python3 -m pip install -r requirements.txt --upgrade
+    python3 -m pip install --upgrade pip
+    python3 -m pip install --upgrade -r "$final_path/pytition/requirements.txt"
 )
 
 #=================================================
@@ -167,7 +169,7 @@ ynh_exec_as $app bash -c "
     cd '$final_path/pytition/pytition'
     export DJANGO_SETTINGS_MODULE=pytition.settings.config
     python3 manage.py migrate
-    python3 manage.py collectstatic
+    python3 manage.py collectstatic --clear --noinput
     python3 manage.py compilemessages
 "
 
