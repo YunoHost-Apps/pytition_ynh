@@ -104,6 +104,7 @@ then
 	# Store file checksum for the new config file location
 	ynh_store_file_checksum --file="/etc/nginx/conf.d/$new_domain.d/$app.conf"
 	domain="$new_domain"
+	path_url="$new_path"
 fi
 
 #=================================================
