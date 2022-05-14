@@ -5,7 +5,7 @@ It shall NOT be edited by hand.
 
 # Pytition for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/pytition.svg)](https://dash.yunohost.org/appci/app/pytition) ![Working status](https://ci-apps.yunohost.org/ci/badges/pytition.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/pytition.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/pytition.svg)](https://dash.yunohost.org/appci/app/pytition) ![](https://ci-apps.yunohost.org/ci/badges/pytition.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/pytition.maintain.svg)  
 [![Install Pytition with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pytition)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -28,13 +28,13 @@ Pytition is an application for privacy-friendly online petitions you can host on
 - You can export signatures in CSV format.
 
 
-**Shipped version:** 2.4~ynh1
+**Shipped version:** 2.5.1~ynh1
 
 **Demo:** https://demo.pytition.org
 
 ## Screenshots
 
-![Screenshot of Pytition](./doc/screenshots/stop_doing_teams.webp)
+![](./doc/screenshots/stop_doing_teams.webp)
 
 ## Disclaimers / important information
 
@@ -42,22 +42,21 @@ Pytition is an application for privacy-friendly online petitions you can host on
 
 ## Documentation and resources
 
-* Official app website: <https://pytition.org>
-* Official admin documentation: <https://pytition.readthedocs.io/en/latest/>
-* Upstream app code repository: <https://github.com/pytition/Pytition>
-* YunoHost documentation for this app: <https://yunohost.org/app_pytition>
-* Report a bug: <https://github.com/YunoHost-Apps/pytition_ynh/issues>
+* Official app website: https://pytition.org
+* Official admin documentation: https://pytition.readthedocs.io/en/latest/
+* Upstream app code repository: https://github.com/pytition/Pytition
+* YunoHost documentation for this app: https://yunohost.org/app_pytition
+* Report a bug: https://github.com/YunoHost-Apps/pytition_ynh/issues
 
 ## Developer info
 
 Please send your pull request to the [testing branch](https://github.com/YunoHost-Apps/pytition_ynh/tree/testing).
 
 To try the testing branch, please proceed like that.
-
-``` bash
+```
 sudo yunohost app install https://github.com/YunoHost-Apps/pytition_ynh/tree/testing --debug
 or
 sudo yunohost app upgrade pytition -u https://github.com/YunoHost-Apps/pytition_ynh/tree/testing --debug
 ```
 
-**More info regarding app packaging:** <https://yunohost.org/packaging_apps>
+**More info regarding app packaging:** https://yunohost.org/packaging_apps
