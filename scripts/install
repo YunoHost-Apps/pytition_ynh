@@ -135,11 +135,11 @@ ynh_add_config --template="../conf/config.py" --destination="$config_path"
 # You may need to use chmod 600 instead of 400,
 # for example if the app is expected to be able to modify its own config
 chmod 400 "$config_path"
-chown $app:$app "$config_path"
+chown $app:www-data "$config_path"
 
 ynh_add_config --template="../conf/uwsgi.yaml" --destination="$final_path/uwsgi.yaml"
 chmod 400 "$final_path/uwsgi.yaml"
-chown $app:$app "$final_path/uwsgi.yaml"
+chown $app:www-data "$final_path/uwsgi.yaml"
 
 #=================================================
 # RUN APP CONFIGURATION
