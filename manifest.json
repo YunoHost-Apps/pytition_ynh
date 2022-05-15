@@ -10,7 +10,7 @@
     "url": "https://example.com",
     "upstream": {
         "license": "BSD-3-Clause",
-        "website": "https://github.com/pytition/Pytition",
+        "website": "https://pytition.org",
         "demo": "https://demo.pytition.org",
         "admindoc": "https://pytition.readthedocs.io/en/latest/",
         "userdoc": "",
