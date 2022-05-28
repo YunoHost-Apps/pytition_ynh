@@ -8,42 +8,33 @@ on:
   workflow_dispatch:
   # Run it every day at 6:00 UTC
   schedule:
-    - cron:  '0 6 * * *'
+    - cron: '0 6 * * *'
+
 jobs:
   updater:
+    # Maintainer should customize the updater script then comment this line.
+    if: ${{ false }}
+
     runs-on: ubuntu-latest
     steps:
       - name: Fetch the source code
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Run the updater script
-        id: run_updater
-        run: |
-          # Setting up Git user
-          git config --global user.name 'yunohost-bot'
-          git config --global user.email 'yunohost-bot@users.noreply.github.com'
-          # Run the updater script
-          .github/workflows/updater.py
-      - name: Commit changes
-        id: commit
-        if: ${{ env.PROCEED == 'true' }}
-        run: |
-          git commit -am "Upgrade to v$VERSION"
+        run: .github/workflows/updater.py
+
       - name: Create Pull Request
-        id: cpr
         if: ${{ env.PROCEED == 'true' }}
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Update to version ${{ env.VERSION }}
+          title: Upgrade ${{ env.APP_NAME }} to version ${{ env.VERSION }}
+          body: Upgrade ${{ env.APP_NAME }} to version ${{ env.VERSION }}
+          commit-message: Upgrade ${{ env.APP_NAME }} to version ${{ env.VERSION }}
           committer: 'yunohost-bot <yunohost-bot@users.noreply.github.com>'
           author: 'yunohost-bot <yunohost-bot@users.noreply.github.com>'
-          signoff: false
           base: testing
-          branch: ci-auto-update-v${{ env.VERSION }}
+          branch: ${{ env.BRANCH }}
           delete-branch: true
-          title: 'Upgrade to version ${{ env.VERSION }}'
-          body: |
-            Upgrade to v${{ env.VERSION }}
-          draft: false
