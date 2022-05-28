@@ -30,7 +30,7 @@
         "mysql"
     ],
     "arguments": {
-        "install" : [
+        "install": [
             {
                 "name": "domain",
                 "type": "domain"
@@ -57,7 +57,10 @@
                     "en": "Choose the application language",
                     "fr": "Choisissez la langue de l'application"
                 },
-                "choices": ["fr", "en"],
+                "choices": [
+                    "fr",
+                    "en"
+                ],
                 "default": "fr"
             },
             {
