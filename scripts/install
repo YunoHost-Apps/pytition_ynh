@@ -14,7 +14,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 
 ynh_clean_setup () {
-	true
+	ynh_clean_check_starting
 }
 # Exit if an error occurs during the execution of the script
 ynh_abort_if_errors
@@ -27,8 +27,8 @@ domain=$YNH_APP_ARG_DOMAIN
 path_url=$YNH_APP_ARG_PATH
 is_public=$YNH_APP_ARG_IS_PUBLIC
 language=$YNH_APP_ARG_LANGUAGE
-# admin=$YNH_APP_ARG_ADMIN
 password=$YNH_APP_ARG_PASSWORD
+
 app=$YNH_APP_INSTANCE_NAME
 
 #=================================================
@@ -39,6 +39,7 @@ ynh_script_progression --message="Validating installation parameters..." --weigh
 final_path=/var/www/$app
 test ! -e "$final_path" || ynh_die --message="This path already contains a folder"
 
+# Register (book) web path
 ynh_webpath_register --app=$app --domain=$domain --path_url=$path_url
 
 #=================================================
@@ -58,7 +59,7 @@ ynh_app_setting_set --app=$app --key=password --value=$password
 #=================================================
 ynh_script_progression --message="Installing dependencies..." --weight=3
 
-ynh_install_app_dependencies "${pkg_dependencies[@]}"
+ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # CREATE DEDICATED USER
@@ -84,10 +85,11 @@ ynh_mysql_setup_db --db_user=$db_user --db_name=$db_name
 ynh_script_progression --message="Setting up source files..." --weight=1
 
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+# Download, check integrity, uncompress and patch the source from app.src
+ynh_setup_source --dest_dir="$final_path/pytition"
 
 mkdir -p "$final_path/static"
 mkdir -p "$final_path/mediaroot"
-ynh_setup_source --dest_dir="$final_path/pytition"
 
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
@@ -97,12 +99,14 @@ chown -R $app:www-data "$final_path"
 # NGINX CONFIGURATION
 #=================================================
 ynh_script_progression --message="Configuring NGINX web server..." --weight=1
+
+# Create a dedicated NGINX config
 ynh_add_nginx_config
 
 #=================================================
 # SPECIFIC SETUP
 #=================================================
-# ...
+# INSTALL PYTHON DEPENDENCIES
 #=================================================
 ynh_script_progression --message="Installing python dependencies..." --weight=4
 
@@ -118,41 +122,10 @@ virtualenv --python=python3 --system-site-packages "${final_path}/venv"
 )
 
 #=================================================
-# CREATE DATA DIRECTORY
-#=================================================
-ynh_script_progression --message="Creating the log directory..." --weight=1
-
-mkdir -p "/var/log/$app"
-chmod 750 "/var/log/$app"
-chown -R $app:www-data "/var/log/$app"
-
-# ### Use these lines if you need to create a directory to store "persistent files" for the application.
-# ### Usually this directory is used to store uploaded files or any file that won't be updated during
-# ### an upgrade and that won't be deleted during app removal unless "--purge" option is used.
-# ### If you're not using these lines:
-# ###		- Remove the section "BACKUP THE DATA DIR" in the backup script
-# ###		- Remove the section "RESTORE THE DATA DIRECTORY" in the restore script
-# ###     - As well as the section "REMOVE DATA DIR" in the remove script
-
-# datadir=/home/yunohost.app/$app
-# ynh_app_setting_set --app=$app --key=datadir --value=$datadir
-
-# mkdir -p $datadir
-
-# # FIXME: this should be managed by the core in the future
-# # Here, as a packager, you may have to tweak the ownerhsip/permissions
-# # such that the appropriate users (e.g. maybe www-data) can access
-# # files in some cases.
-# # But FOR THE LOVE OF GOD, do not allow r/x for "others" on the entire folder -
-# # this will be treated as a security issue.
-# chmod 750 "$datadir"
-# chmod -R o-rwx "$datadir"
-# chown -R $app:www-data "$datadir"
-
-#=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding configuration files..." --weight=1
+ynh_script_progression --message="Adding a configuration file..." --weight=1
+
 secret_key=$(generate_secret_key)
 
 config_path="$final_path/pytition/pytition/pytition/settings/config.py"
@@ -169,7 +142,7 @@ chmod 400 "$final_path/uwsgi.yaml"
 chown $app:$app "$final_path/uwsgi.yaml"
 
 #=================================================
-# Run app configuration
+# RUN APP CONFIGURATION
 #=================================================
 ynh_script_progression --message="Running app configuration..." --weight=3
 
@@ -204,8 +177,12 @@ ynh_add_systemd_config
 #=================================================
 ynh_script_progression --message="Configuring log rotation..." --weight=1
 
+mkdir -p "/var/log/$app"
+chmod 750 "/var/log/$app"
+chown -R $app:www-data "/var/log/$app"
+
 # Use logrotate to manage application logfile(s)
-# TODO: ynh_use_logrotate
+ynh_use_logrotate
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
@@ -223,14 +200,6 @@ ynh_script_progression --message="Starting a systemd service..." --weight=1
 ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
 
 #=================================================
-# SETUP FAIL2BAN
-#=================================================
-ynh_script_progression --message="Configuring Fail2Ban..." --weight=1
-
-# Create a dedicated Fail2Ban config
-# TODO: ynh_add_fail2ban_config --logpath="/var/log/nginx/${domain}-error.log" --failregex="Regex to match into the log for a failed login"
-
-#=================================================
 # SETUP SSOWAT
 #=================================================
 ynh_script_progression --message="Configuring permissions..." --weight=1
@@ -238,18 +207,10 @@ ynh_script_progression --message="Configuring permissions..." --weight=1
 # Make app public if necessary
 if [ $is_public -eq 1 ]
 then
-    # Everyone can access the app.
-    # The "main" permission is automatically created before the install script.
-    ynh_permission_update --permission="main" --add="visitors"
+	# Everyone can access the app.
+	# The "main" permission is automatically created before the install script.
+	ynh_permission_update --permission="main" --add="visitors"
 fi
-
-# Only the admin can access the admin panel of the app (if the app has an admin panel)
-# ynh_permission_create --permission="admin" --url="/admin" --allowed=$admin
-
-# Everyone can access the API part
-# We don't want to display the tile in the SSO so we put --show_tile="false"
-# And we don't want the YunoHost admin to be able to remove visitors group to this permission, so we put --protected="true"
-# ynh_permission_create --permission="api" --url="/api" --allowed="visitors" --show_tile="false" --protected="true"
 
 #=================================================
 # RELOAD NGINX
