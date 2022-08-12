@@ -30,7 +30,10 @@ def get_latest_version(repo: str) -> Tuple[version.Version, Any]:
     api_url = repo.replace("github.com", "api.github.com/repos")
     # May use {api_url}/tags and release["name"] for tag-based upstream
     releases = requests.get(f"{api_url}/releases").json()
-    release_info = next(release for release in releases if not release["prerelease"])
+    release_info = next(
+        release for release in releases
+        if not release["prerelease"]
+    )
     return version.Version(release_info["tag_name"]), release_info
 
 def get_asset_urls_of_release(repo: str, release: Any) -> List[str]:
@@ -64,9 +67,10 @@ def write_src_file(name: str, asset_url: str, extension: str,
     logging.info("Writing %s...", name)
 
     with open(f"conf/{name}", "w", encoding="utf-8") as conf_file:
+        source_sum = sha256sum_of_url(asset_url)
         conf_file.write(textwrap.dedent(f"""\
             SOURCE_URL={asset_url}
-            SOURCE_SUM={sha256sum_of_url(asset_url)}
+            SOURCE_SUM={source_sum}
             SOURCE_SUM_PRG=sha256sum
             SOURCE_FORMAT={extension}
             SOURCE_IN_SUBDIR={str(subdir).lower()}
@@ -102,7 +106,7 @@ def main():
         return
 
     # Proceed only if a PR for this new version does not already exist
-    branch = f"ci-auto-update-v${latest_version}"
+    branch = f"ci-auto-update-v{latest_version}"
     command = ["git", "ls-remote", "--exit-code", "-h", repo, branch]
     if run(command, stderr=PIPE, stdout=PIPE, check=False).returncode == 0:
         logging.warning("A branch already exists for this update")
