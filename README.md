@@ -30,6 +30,7 @@ Pytition is an application for privacy-friendly online petitions you can host on
 
 **Shipped version:** 2.5.1~ynh1
 
+
 **Demo:** https://demo.pytition.org
 
 ## Screenshots
