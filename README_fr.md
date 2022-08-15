@@ -30,6 +30,7 @@ Pytition permet d'héberger des pétitions respectueuses de la vie privée sur v
 
 **Version incluse :** 2.5.1~ynh2
 
+
 **Démo :** https://demo.pytition.org
 
 ## Captures d'écran
