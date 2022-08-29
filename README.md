@@ -28,7 +28,7 @@ Pytition is an application for privacy-friendly online petitions you can host on
 - You can export signatures in CSV format.
 
 
-**Shipped version:** 2.5.1~ynh1
+**Shipped version:** 2.5.1~ynh2
 
 
 **Demo:** https://demo.pytition.org

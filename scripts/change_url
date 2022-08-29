@@ -26,6 +26,7 @@ app=$YNH_APP_INSTANCE_NAME
 #=================================================
 ynh_script_progression --message="Loading installation settings..." --weight=1
 
+# Needed for helper "ynh_add_nginx_config"
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 
 # Add settings here as needed by your application
@@ -103,17 +104,19 @@ then
 	mv $nginx_conf_path /etc/nginx/conf.d/$new_domain.d/$app.conf
 	# Store file checksum for the new config file location
 	ynh_store_file_checksum --file="/etc/nginx/conf.d/$new_domain.d/$app.conf"
-	domain="$new_domain"
-	path_url="$new_path"
+
 fi
 
 #=================================================
 # SPECIFIC MODIFICATIONS
 #=================================================
-# Reedit configuration files
+# UPDATE A CONFIG FILE
 #=================================================
-ynh_script_progression --message="Updating app's configuration..." --weight=1
+ynh_script_progression --message="Updating a configuration file..." --weight=1
 
+domain="$new_domain"
+path_url="$new_path"
+	
 ynh_add_config --template="../conf/config.py" --destination="$final_path/pytition/pytition/pytition/settings/config.py"
 ynh_add_config --template="../conf/uwsgi.yaml" --destination="$final_path/uwsgi.yaml"
 
@@ -124,6 +127,7 @@ ynh_add_config --template="../conf/uwsgi.yaml" --destination="$final_path/uwsgi.
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
+# Start a systemd service
 ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
 
 #=================================================
