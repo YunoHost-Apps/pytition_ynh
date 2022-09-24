@@ -28,7 +28,7 @@ Pytition permet d'héberger des pétitions respectueuses de la vie privée sur v
 - Vous pouvez exporter les signatures via CSV.
 
 
-**Version incluse :** 2.5.1~ynh2
+**Version incluse :** 2.6~ynh1
 
 **Démo :** https://demo.pytition.org
 
