@@ -6,7 +6,7 @@
         "en": "Host privacy-friendly online petitions",
         "fr": "Hébergez des pétitions en ligne respectueuses de la vie privée"
     },
-    "version": "2.5.1~ynh2",
+    "version": "2.6~ynh1",
     "url": "https://pytition.org",
     "upstream": {
         "license": "BSD-3-Clause",
