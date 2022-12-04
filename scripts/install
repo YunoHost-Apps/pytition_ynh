@@ -94,6 +94,8 @@ mkdir -p "$final_path/mediaroot"
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
+setfacl -dR -m g:"www-data":rX -m u:$app:rwX "$final_path/mediaroot/"
+setfacl -R -m g:"www-data":rX -m u:$app:rwX "$final_path/mediaroot/"
 
 #=================================================
 # NGINX CONFIGURATION
