@@ -38,7 +38,7 @@ Pytition is an application for privacy-friendly online petitions you can host on
 
 ## Disclaimers / important information
 
-* No Single-Sign-On and Yunohost LDAP support
+* No Single-Sign-On and no Yunohost LDAP support
 
 ## Documentation and resources
 
