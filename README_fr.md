@@ -38,7 +38,7 @@ Pytition permet d'héberger des pétitions respectueuses de la vie privée sur v
 
 ## Avertissements / informations importantes
 
-* Pas de support du Single-Sign-On ni du LDAP Yunohost.
+* Pas de support du Single-Sign-On ou du LDAP Yunohost.
 
 ## Documentations et ressources
 
