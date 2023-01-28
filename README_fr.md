@@ -5,15 +5,15 @@ It shall NOT be edited by hand.
 
 # Pytition pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/pytition.svg)](https://dash.yunohost.org/appci/app/pytition) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/pytition.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/pytition.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/pytition.svg)](https://dash.yunohost.org/appci/app/pytition) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/pytition.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/pytition.maintain.svg)
 [![Installer Pytition avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pytition)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer Pytition rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer Pytition rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 Pytition permet d'héberger des pétitions respectueuses de la vie privée sur votre propre serveur.
 
@@ -28,13 +28,13 @@ Pytition permet d'héberger des pétitions respectueuses de la vie privée sur v
 - Vous pouvez exporter les signatures via CSV.
 
 
-**Version incluse :** 2.6~ynh1
+**Version incluse :** 2.7~ynh1
 
 **Démo :** https://demo.pytition.org
 
-## Captures d'écran
+## Captures d’écran
 
-![Capture d'écran de Pytition](./doc/screenshots/stop_doing_teams.webp)
+![Capture d’écran de Pytition](./doc/screenshots/stop_doing_teams.webp)
 
 ## Avertissements / informations importantes
 
@@ -42,9 +42,9 @@ Pytition permet d'héberger des pétitions respectueuses de la vie privée sur v
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://pytition.org>
-* Documentation officielle de l'admin : <https://pytition.readthedocs.io/en/latest/>
-* Dépôt de code officiel de l'app : <https://github.com/pytition/Pytition>
+* Site officiel de l’app : <https://pytition.org>
+* Documentation officielle de l’admin : <https://pytition.readthedocs.io/en/latest/>
+* Dépôt de code officiel de l’app : <https://github.com/pytition/Pytition>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_pytition>
 * Signaler un bug : <https://github.com/YunoHost-Apps/pytition_ynh/issues>
 
@@ -60,4 +60,4 @@ ou
 sudo yunohost app upgrade pytition -u https://github.com/YunoHost-Apps/pytition_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>
