@@ -3,10 +3,10 @@ from pytition.settings.base import *
 SECRET_KEY = '__SECRET_KEY__'
 
 STATIC_URL = '__PATH__/static/'
-STATIC_ROOT = '__FINAL_PATH__/static'
+STATIC_ROOT = '__INSTALL_DIR__/static'
 
 MEDIA_URL = '__PATH__/mediaroot/'
-MEDIA_ROOT = '__FINAL_PATH__/mediaroot'
+MEDIA_ROOT = '__INSTALL_DIR__/mediaroot'
 
 DATABASES = {
     'default': {
