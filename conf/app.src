@@ -1,6 +1,0 @@
-SOURCE_URL=https://github.com/pytition/Pytition/archive/refs/tags/v2.7.tar.gz
-SOURCE_SUM=3ed7ea64765a259a453cbd58569ed0177e40a4f248995bd0c613966d1d40d60e
-SOURCE_SUM_PRG=sha256sum
-SOURCE_FORMAT=tar.gz
-SOURCE_IN_SUBDIR=true
-SOURCE_EXTRACT=true

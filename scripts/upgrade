@@ -12,16 +12,16 @@ source /usr/share/yunohost/helpers
 #=================================================
 # LOAD SETTINGS
 #=================================================
-ynh_script_progression --message="Loading installation settings..." --weight=1
+#REMOVEME? ynh_script_progression --message="Loading installation settings..." --weight=1
 
-app=$YNH_APP_INSTANCE_NAME
+#REMOVEME? app=$YNH_APP_INSTANCE_NAME
 
-domain=$(ynh_app_setting_get --app=$app --key=domain)
-path_url=$(ynh_app_setting_get --app=$app --key=path)
-final_path=$(ynh_app_setting_get --app=$app --key=final_path)
-db_name=$(ynh_app_setting_get --app=$app --key=db_name)
-db_user=$db_name
-db_pwd=$(ynh_app_setting_get --app=$app --key=mysqlpwd)
+#REMOVEME? domain=$(ynh_app_setting_get --app=$app --key=domain)
+#REMOVEME? path=$(ynh_app_setting_get --app=$app --key=path)
+#REMOVEME? #REMOVEME? install_dir=$(ynh_app_setting_get --app=$app --key=install_dir)
+#REMOVEME? db_name=$(ynh_app_setting_get --app=$app --key=db_name)
+#REMOVEME? db_user=$db_name
+#REMOVEME? db_pwd=$(ynh_app_setting_get --app=$app --key=mysqlpwd)
 
 #=================================================
 # CHECK VERSION
@@ -33,16 +33,16 @@ upgrade_type=$(ynh_check_app_version_changed)
 #=================================================
 # BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
 #=================================================
-ynh_script_progression --message="Backing up the app before upgrading (may take a while)..." --weight=1
+#REMOVEME? ynh_script_progression --message="Backing up the app before upgrading (may take a while)..." --weight=1
 
 # Backup the current version of the app
-ynh_backup_before_upgrade
-ynh_clean_setup () {
+#REMOVEME? ynh_backup_before_upgrade
+#REMOVEME? ynh_clean_setup () {
 	# Restore it if the upgrade fails
-	ynh_restore_upgradebackup
+#REMOVEME? 	ynh_restore_upgradebackup
 }
 # Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
+#REMOVEME? ynh_abort_if_errors
 
 #=================================================
 # STANDARD UPGRADE STEPS
@@ -61,10 +61,10 @@ ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
-ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
+#REMOVEME? ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
 
 # Create a dedicated user (if not existing)
-ynh_system_user_create --username=$app --home_dir="$final_path"
+#REMOVEME? ynh_system_user_create --username=$app --home_dir="$install_dir"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -75,19 +75,19 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=1
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$final_path/pytition"
+	ynh_setup_source --dest_dir="$install_dir/pytition"
 fi
 
-chmod 750 "$final_path"
-chmod -R o-rwx "$final_path"
-chown -R $app:www-data "$final_path"
+chmod 750 "$install_dir"
+chmod -R o-rwx "$install_dir"
+chown -R $app:www-data "$install_dir"
 
 #=================================================
 # UPGRADE DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Upgrading dependencies..." --weight=1
+#REMOVEME? ynh_script_progression --message="Upgrading dependencies..." --weight=1
 
-ynh_install_app_dependencies $pkg_dependencies
+#REMOVEME? ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # NGINX CONFIGURATION
@@ -102,15 +102,15 @@ ynh_add_nginx_config
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing python dependencies..." --weight=1
+#REMOVEME? ynh_script_progression --message="Installing python dependencies..." --weight=1
 
 (
     set +o nounset
-    source "${final_path}/venv/bin/activate"
+    source "${install_dir}/venv/bin/activate"
     set -o nounset
 
     python3 -m pip install --upgrade pip
-    python3 -m pip install --upgrade -r "$final_path/pytition/requirements.txt"
+    python3 -m pip install --upgrade -r "$install_dir/pytition/requirements.txt"
 )
 
 #=================================================
@@ -120,14 +120,14 @@ ynh_script_progression --message="Updating a configuration file..." --weight=1
 
 secret_key=$(generate_secret_key)
 
-config_path="$final_path/pytition/pytition/pytition/settings/config.py"
+config_path="$install_dir/pytition/pytition/pytition/settings/config.py"
 ynh_add_config --template="../conf/config.py" --destination="$config_path"
 chmod 400 "$config_path"
 chown $app:$app "$config_path"
 
-ynh_add_config --template="../conf/uwsgi.yaml" --destination="$final_path/uwsgi.yaml"
-chmod 400 "$final_path/uwsgi.yaml"
-chown $app:$app "$final_path/uwsgi.yaml"
+ynh_add_config --template="../conf/uwsgi.yaml" --destination="$install_dir/uwsgi.yaml"
+chmod 400 "$install_dir/uwsgi.yaml"
+chown $app:$app "$install_dir/uwsgi.yaml"
 
 #=================================================
 # RUN APP CONFIGURATION
@@ -136,16 +136,16 @@ ynh_script_progression --message="Running app configuration..." --weight=1
 
 ynh_exec_as $app bash -c "
     set +o nounset
-    source '$final_path/venv/bin/activate'
+    source '$install_dir/venv/bin/activate'
     set -o nounset
-    cd '$final_path/pytition/pytition'
+    cd '$install_dir/pytition/pytition'
     export DJANGO_SETTINGS_MODULE=pytition.settings.config
     python3 manage.py migrate
     python3 manage.py collectstatic --clear --noinput
     python3 manage.py compilemessages
 "
 
-chown -R $app:www-data "$final_path/static"
+chown -R $app:www-data "$install_dir/static"
 
 #=================================================
 # SETUP SYSTEMD
@@ -182,9 +182,9 @@ ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$ap
 #=================================================
 # RELOAD NGINX
 #=================================================
-ynh_script_progression --message="Reloading NGINX web server..." --weight=1
+#REMOVEME? ynh_script_progression --message="Reloading NGINX web server..." --weight=1
 
-ynh_systemd_action --service_name=nginx --action=reload
+#REMOVEME? ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
 # END OF SCRIPT
