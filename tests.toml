@@ -1,0 +1,9 @@
+test_format = 1.0
+
+[default]
+
+    # -------------------------------
+    # Commits to test upgrade from
+    # -------------------------------
+
+    test_upgrade_from.ea9cd8f526b2ac6f972c66a73b340266a1c966bc.name = "Upgrade from 2.5.1"
