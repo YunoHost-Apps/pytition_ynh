@@ -37,10 +37,6 @@ Pytition is an application for privacy-friendly online petitions you can host on
 
 ![Screenshot of Pytition](./doc/screenshots/stop_doing_teams.webp)
 
-## Disclaimers / important information
-
-* No Single-Sign-On and Yunohost LDAP support
-
 ## Documentation and resources
 
 * Official app website: <https://pytition.org>
