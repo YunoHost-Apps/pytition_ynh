@@ -15,9 +15,9 @@ uwsgi:
     plugin: python3
 
     # Virtualenv and python path
-    virtualenv: __FINALPATH__/venv
-    pythonpath: __FINALPATH__
-    chdir: __FINALPATH__/pytition/pytition
+    virtualenv: __INSTALL_DIR__/venv
+    pythonpath: __INSTALL_DIR__
+    chdir: __INSTALL_DIR__/pytition/pytition
     env: DJANGO_SETTINGS_MODULE=pytition.settings.config
 
     socket: /run/__APP__/app.socket
