@@ -7,9 +7,9 @@ After=network.target mysql.service
 Type=notify
 User=__APP__
 Group=__APP__
-WorkingDirectory=__FINALPATH__/
+WorkingDirectory=__INSTALL_DIR__/
 RuntimeDirectory=__APP__
-ExecStart=uwsgi --yaml __FINALPATH__/uwsgi.yaml --die-on-term
+ExecStart=uwsgi --yaml __INSTALL_DIR__/uwsgi.yaml --die-on-term
 
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit

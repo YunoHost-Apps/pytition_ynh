@@ -13,89 +13,89 @@ source /usr/share/yunohost/helpers
 # MANAGE SCRIPT FAILURE
 #=================================================
 
-ynh_clean_setup () {
+#REMOVEME? ynh_clean_setup () {
 	true
 }
 # Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
+#REMOVEME? ynh_abort_if_errors
 
 #=================================================
 # RETRIEVE ARGUMENTS FROM THE MANIFEST
 #=================================================
 
-domain=$YNH_APP_ARG_DOMAIN
-path_url=$YNH_APP_ARG_PATH
-is_public=$YNH_APP_ARG_IS_PUBLIC
-language=$YNH_APP_ARG_LANGUAGE
-password=$YNH_APP_ARG_PASSWORD
+#REMOVEME? domain=$YNH_APP_ARG_DOMAIN
+#REMOVEME? path=$YNH_APP_ARG_PATH
+#REMOVEME? is_public=$YNH_APP_ARG_IS_PUBLIC
+#REMOVEME? language=$YNH_APP_ARG_LANGUAGE
+#REMOVEME? password=$YNH_APP_ARG_PASSWORD
 
-app=$YNH_APP_INSTANCE_NAME
+#REMOVEME? app=$YNH_APP_INSTANCE_NAME
 
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
 #=================================================
-ynh_script_progression --message="Validating installation parameters..." --weight=1
+#REMOVEME? ynh_script_progression --message="Validating installation parameters..." --weight=1
 
-final_path=/var/www/$app
-test ! -e "$final_path" || ynh_die --message="This path already contains a folder"
+#REMOVEME? install_dir=/var/www/$app
+#REMOVEME? test ! -e "$install_dir" || ynh_die --message="This path already contains a folder"
 
 # Register (book) web path
-ynh_webpath_register --app=$app --domain=$domain --path_url=$path_url
+#REMOVEME? ynh_webpath_register --app=$app --domain=$domain --path=$path
 
 #=================================================
 # STORE SETTINGS FROM MANIFEST
 #=================================================
-ynh_script_progression --message="Storing installation settings..." --weight=1
+#REMOVEME? ynh_script_progression --message="Storing installation settings..." --weight=1
 
-ynh_app_setting_set --app=$app --key=domain --value=$domain
-ynh_app_setting_set --app=$app --key=path --value=$path_url
+#REMOVEME? ynh_app_setting_set --app=$app --key=domain --value=$domain
+#REMOVEME? ynh_app_setting_set --app=$app --key=path --value=$path
 ynh_app_setting_set --app=$app --key=language --value=$language
-ynh_app_setting_set --app=$app --key=password --value=$password
+#REMOVEME? ynh_app_setting_set --app=$app --key=password --value=$password
 
 #=================================================
 # STANDARD MODIFICATIONS
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=3
+#REMOVEME? ynh_script_progression --message="Installing dependencies..." --weight=3
 
-ynh_install_app_dependencies $pkg_dependencies
+#REMOVEME? ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
-ynh_script_progression --message="Configuring system user..." --weight=1
+#REMOVEME? ynh_script_progression --message="Configuring system user..." --weight=1
 
 # Create a system user
-ynh_system_user_create --username=$app --home_dir="$final_path"
+#REMOVEME? ynh_system_user_create --username=$app --home_dir="$install_dir"
 
 #=================================================
 # CREATE A MYSQL DATABASE
 #=================================================
-ynh_script_progression --message="Creating a MySQL database..." --weight=1
+#REMOVEME? ynh_script_progression --message="Creating a MySQL database..." --weight=1
 
-db_name=$(ynh_sanitize_dbid --db_name=$app)
-db_user=$db_name
-ynh_app_setting_set --app=$app --key=db_name --value=$db_name
-ynh_mysql_setup_db --db_user=$db_user --db_name=$db_name
+#REMOVEME? db_name=$(ynh_sanitize_dbid --db_name=$app)
+#REMOVEME? db_user=$db_name
+#REMOVEME? ynh_app_setting_set --app=$app --key=db_name --value=$db_name
+#REMOVEME? ynh_mysql_setup_db --db_user=$db_user --db_name=$db_name
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=1
 
-ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+#REMOVEME? ynh_app_setting_set --app=$app --key=install_dir --value=$install_dir
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$final_path/pytition"
+ynh_setup_source --dest_dir="$install_dir/pytition"
 
-mkdir -p "$final_path/static"
-mkdir -p "$final_path/mediaroot"
+mkdir -p "$install_dir/static"
+mkdir -p "$install_dir/mediaroot"
 
-chmod 750 "$final_path"
-chmod -R o-rwx "$final_path"
-chown -R $app:www-data "$final_path"
-setfacl -dR -m g:"www-data":rX -m u:$app:rwX "$final_path/mediaroot/"
-setfacl -R -m g:"www-data":rX -m u:$app:rwX "$final_path/mediaroot/"
+chmod 750 "$install_dir"
+chmod -R o-rwx "$install_dir"
+chown -R $app:www-data "$install_dir"
+setfacl -dR -m g:"www-data":rX -m u:$app:rwX "$install_dir/mediaroot/"
+setfacl -R -m g:"www-data":rX -m u:$app:rwX "$install_dir/mediaroot/"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -110,17 +110,17 @@ ynh_add_nginx_config
 #=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing python dependencies..." --weight=4
+#REMOVEME? ynh_script_progression --message="Installing python dependencies..." --weight=4
 
 # Setup virtualenv and install dependencies
-virtualenv --python=python3 --system-site-packages "${final_path}/venv"
+virtualenv --python=python3 --system-site-packages "${install_dir}/venv"
 (
     set +o nounset
-    source "${final_path}/venv/bin/activate"
+    source "${install_dir}/venv/bin/activate"
     set -o nounset
 
     python3 -m pip install --upgrade pip
-    python3 -m pip install -r "$final_path/pytition/requirements.txt"
+    python3 -m pip install -r "$install_dir/pytition/requirements.txt"
 )
 
 #=================================================
@@ -130,7 +130,7 @@ ynh_script_progression --message="Adding a configuration file..." --weight=1
 
 secret_key=$(generate_secret_key)
 
-config_path="$final_path/pytition/pytition/pytition/settings/config.py"
+config_path="$install_dir/pytition/pytition/pytition/settings/config.py"
 ynh_add_config --template="../conf/config.py" --destination="$config_path"
 
 # FIXME: this should be handled by the core in the future
@@ -139,9 +139,9 @@ ynh_add_config --template="../conf/config.py" --destination="$config_path"
 chmod 400 "$config_path"
 chown $app:$app "$config_path"
 
-ynh_add_config --template="../conf/uwsgi.yaml" --destination="$final_path/uwsgi.yaml"
-chmod 400 "$final_path/uwsgi.yaml"
-chown $app:$app "$final_path/uwsgi.yaml"
+ynh_add_config --template="../conf/uwsgi.yaml" --destination="$install_dir/uwsgi.yaml"
+chmod 400 "$install_dir/uwsgi.yaml"
+chown $app:$app "$install_dir/uwsgi.yaml"
 
 #=================================================
 # RUN APP CONFIGURATION
@@ -150,9 +150,9 @@ ynh_script_progression --message="Running app configuration..." --weight=3
 
 ynh_exec_as $app bash -c "
     set +o nounset
-    source '$final_path/venv/bin/activate'
+    source '$install_dir/venv/bin/activate'
     set -o nounset
-    cd '$final_path/pytition/pytition'
+    cd '$install_dir/pytition/pytition'
     export DJANGO_SETTINGS_MODULE=pytition.settings.config
     python3 manage.py migrate
     python3 manage.py collectstatic
@@ -161,8 +161,8 @@ ynh_exec_as $app bash -c "
     python3 manage.py createsuperuser --noinput --username admin --email 'admin@$domain'
 "
 
-chmod 750 "$final_path/static"
-chown -R $app:www-data "$final_path/static"
+chmod 750 "$install_dir/static"
+chown -R $app:www-data "$install_dir/static"
 
 #=================================================
 # SETUP SYSTEMD
@@ -204,22 +204,22 @@ ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$ap
 #=================================================
 # SETUP SSOWAT
 #=================================================
-ynh_script_progression --message="Configuring permissions..." --weight=1
+#REMOVEME? ynh_script_progression --message="Configuring permissions..." --weight=1
 
 # Make app public if necessary
-if [ $is_public -eq 1 ]
+#REMOVEME? if [ $is_public -eq 1 ]
 then
 	# Everyone can access the app.
 	# The "main" permission is automatically created before the install script.
-	ynh_permission_update --permission="main" --add="visitors"
+#REMOVEME? 	ynh_permission_update --permission="main" --add="visitors"
 fi
 
 #=================================================
 # RELOAD NGINX
 #=================================================
-ynh_script_progression --message="Reloading NGINX web server..." --weight=1
+#REMOVEME? ynh_script_progression --message="Reloading NGINX web server..." --weight=1
 
-ynh_systemd_action --service_name=nginx --action=reload
+#REMOVEME? ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
 # END OF SCRIPT
