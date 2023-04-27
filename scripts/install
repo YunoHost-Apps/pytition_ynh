@@ -88,8 +88,7 @@ ynh_exec_as $app bash -c "
     python3 manage.py migrate
     python3 manage.py collectstatic
     python3 manage.py compilemessages
-    DJANGO_SUPERUSER_PASSWORD='$password' \
-    python3 manage.py createsuperuser --noinput --username $admin --email $email --password '$password'
+    DJANGO_SUPERUSER_PASSWORD='$password' python3 manage.py createsuperuser --noinput --username $admin --email $email
 "
 
 chmod 750 "$install_dir/static"
