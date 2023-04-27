@@ -48,8 +48,8 @@ ram.runtime = "50M"
     default = "fr"
 
     [install.password]
-    help.en = "Administrator password (username is admin)"
-    help.fr = "Mot de passe administrateur (l'identifiant est admin)"
+    help.en = "Administrator password"
+    help.fr = "Mot de passe administrateur"
     type = "password"
 
 [resources]
