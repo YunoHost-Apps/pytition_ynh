@@ -11,6 +11,10 @@ source /usr/share/yunohost/helpers
 
 email=$(ynh_user_get_info --username=$admin --key=mail)
 
+if [[ "$email" == "admin_legacy" ]]; then
+    ynh_die --message="Please select a regular user as admin of the app, NOT the admin user!" --ret_code=1
+fi
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
