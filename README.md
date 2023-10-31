@@ -42,7 +42,7 @@ Pytition is an application for privacy-friendly online petitions you can host on
 * Official app website: <https://pytition.org>
 * Official admin documentation: <https://pytition.readthedocs.io/en/latest/>
 * Upstream app code repository: <https://github.com/pytition/Pytition>
-* YunoHost documentation for this app: <https://yunohost.org/app_pytition>
+* YunoHost Store: <https://apps.yunohost.org/app/pytition>
 * Report a bug: <https://github.com/YunoHost-Apps/pytition_ynh/issues>
 
 ## Developer info

@@ -42,7 +42,7 @@ Pytition permet d'héberger des pétitions respectueuses de la vie privée sur v
 * Site officiel de l’app : <https://pytition.org>
 * Documentation officielle de l’admin : <https://pytition.readthedocs.io/en/latest/>
 * Dépôt de code officiel de l’app : <https://github.com/pytition/Pytition>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_pytition>
+* YunoHost Store: <https://apps.yunohost.org/app/pytition>
 * Signaler un bug : <https://github.com/YunoHost-Apps/pytition_ynh/issues>
 
 ## Informations pour les développeurs
