@@ -6,7 +6,7 @@ name = "Pytition"
 description.en = "Host privacy-friendly online petitions"
 description.fr = "Hébergez des pétitions en ligne respectueuses de la vie privée"
 
-version = "2.7~ynh2"
+version = "2.8~ynh1"
 
 maintainers = ["Salamandar"]
 
@@ -58,8 +58,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/pytition/Pytition/archive/refs/tags/v2.7.tar.gz"
-    sha256 = "3ed7ea64765a259a453cbd58569ed0177e40a4f248995bd0c613966d1d40d60e"
+    url = "https://github.com/pytition/Pytition/archive/refs/tags/v2.8.tar.gz"
+    sha256 = "4e27c80401114f9c7b79ce24668fc0a40b43023b38ebe9e76c120f652f498f41"
 
     [resources.system_user]
 
