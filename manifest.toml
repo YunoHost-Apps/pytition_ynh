@@ -6,7 +6,7 @@ name = "Pytition"
 description.en = "Host privacy-friendly online petitions"
 description.fr = "Hébergez des pétitions en ligne respectueuses de la vie privée"
 
-version = "2.8~ynh1"
+version = "2.8~ynh2"
 
 maintainers = ["Salamandar"]
 
@@ -58,8 +58,9 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/pytition/Pytition/archive/refs/tags/v2.8.tar.gz"
-    sha256 = "4e27c80401114f9c7b79ce24668fc0a40b43023b38ebe9e76c120f652f498f41"
+    url = "https://github.com/pytition/Pytition/archive/refs/tags/v2.8.1.tar.gz"
+    sha256 = "ed408859aef3dd2646667b01980ee40e76b14cb683ff616389f156a12dc30927"
+    autoupdate.strategy = "latest_github_release"
 
     [resources.system_user]
 
@@ -67,6 +68,10 @@ ram.runtime = "50M"
 
     [resources.permissions]
     main.url = "/"
+
+    admin.url = "/admin"
+    admin.show_tile = false
+    admin.allowed = "admins"
 
     [resources.apt]
     packages = "mariadb-server python3 virtualenv gettext libzip-dev libssl-dev default-libmysqlclient-dev uwsgi uwsgi-plugin-python3 python3-uwsgidecorators"
