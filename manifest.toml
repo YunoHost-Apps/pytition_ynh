@@ -58,8 +58,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/pytition/Pytition/archive/refs/tags/v2.8.tar.gz"
-    sha256 = "4e27c80401114f9c7b79ce24668fc0a40b43023b38ebe9e76c120f652f498f41"
+    url = "https://github.com/pytition/Pytition/archive/refs/tags/v2.8.1.tar.gz"
+    sha256 = "ed408859aef3dd2646667b01980ee40e76b14cb683ff616389f156a12dc30927"
     autoupdate.strategy = "latest_github_release"
 
     [resources.system_user]
