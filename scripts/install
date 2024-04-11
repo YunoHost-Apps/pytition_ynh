@@ -55,6 +55,7 @@ virtualenv --python=python3 --system-site-packages "${install_dir}/venv"
     set -o nounset
 
     python3 -m pip install --upgrade pip
+    python3 -m pip install lxml_html_clean
     python3 -m pip install -r "$install_dir/pytition/requirements.txt"
 )
 

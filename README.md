@@ -9,7 +9,7 @@ It shall NOT be edited by hand.
 
 [![Install Pytition with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pytition)
 
-*[Read this README is other languages.](./ALL_README.md)*
+*[Read this README in other languages.](./ALL_README.md)*
 
 > *This package allows you to install Pytition quickly and simply on a YunoHost server.*  
 > *If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
@@ -29,7 +29,7 @@ Pytition is an application for privacy-friendly online petitions you can host on
 - You can export signatures in CSV format.
 
 
-**Shipped version:** 2.8~ynh2
+**Shipped version:** 2.8~ynh3
 
 **Demo:** <https://demo.pytition.org>
 

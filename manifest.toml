@@ -6,7 +6,7 @@ name = "Pytition"
 description.en = "Host privacy-friendly online petitions"
 description.fr = "Hébergez des pétitions en ligne respectueuses de la vie privée"
 
-version = "2.8~ynh2"
+version = "2.8~ynh3"
 
 maintainers = ["Salamandar"]
 
