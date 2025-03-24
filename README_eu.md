@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # Pytition YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/pytition.svg)](https://dash.yunohost.org/appci/app/pytition) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/pytition.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/pytition.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/pytition)](https://ci-apps.yunohost.org/ci/apps/pytition/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/pytition)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/pytition)
 
 [![Instalatu Pytition YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pytition)
 
@@ -29,7 +31,7 @@ Pytition is an application for privacy-friendly online petitions you can host on
 - You can export signatures in CSV format.
 
 
-**Paketatutako bertsioa:** 2.8~ynh3
+**Paketatutako bertsioa:** 2.8~ynh4
 
 **Demoa:** <https://demo.pytition.org>
 

@@ -5,7 +5,9 @@ No se debe editar a mano.
 
 # Pytition para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/pytition.svg)](https://dash.yunohost.org/appci/app/pytition) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/pytition.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/pytition.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/pytition)](https://ci-apps.yunohost.org/ci/apps/pytition/)
+![Estado funcional](https://apps.yunohost.org/badge/state/pytition)
+![Estado En Mantención](https://apps.yunohost.org/badge/maintained/pytition)
 
 [![Instalar Pytition con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pytition)
 
@@ -29,7 +31,7 @@ Pytition is an application for privacy-friendly online petitions you can host on
 - You can export signatures in CSV format.
 
 
-**Versión actual:** 2.8~ynh3
+**Versión actual:** 2.8~ynh4
 
 **Demo:** <https://demo.pytition.org>
 
@@ -47,7 +49,7 @@ Pytition is an application for privacy-friendly online petitions you can host on
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/pytition_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/pytition_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
