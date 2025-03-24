@@ -5,7 +5,9 @@ It shall NOT be edited by hand.
 
 # Pytition for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/pytition.svg)](https://dash.yunohost.org/appci/app/pytition) ![Working status](https://ci-apps.yunohost.org/ci/badges/pytition.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/pytition.maintain.svg)
+[![Integration level](https://apps.yunohost.org/badge/integration/pytition)](https://ci-apps.yunohost.org/ci/apps/pytition/)
+![Working status](https://apps.yunohost.org/badge/state/pytition)
+![Maintenance status](https://apps.yunohost.org/badge/maintained/pytition)
 
 [![Install Pytition with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pytition)
 
@@ -29,7 +31,7 @@ Pytition is an application for privacy-friendly online petitions you can host on
 - You can export signatures in CSV format.
 
 
-**Shipped version:** 2.8~ynh3
+**Shipped version:** 2.8~ynh4
 
 **Demo:** <https://demo.pytition.org>
 

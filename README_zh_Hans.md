@@ -5,7 +5,9 @@
 
 # YunoHost 上的 Pytition
 
-[![集成程度](https://dash.yunohost.org/integration/pytition.svg)](https://dash.yunohost.org/appci/app/pytition) ![工作状态](https://ci-apps.yunohost.org/ci/badges/pytition.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/pytition.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/pytition)](https://ci-apps.yunohost.org/ci/apps/pytition/)
+![工作状态](https://apps.yunohost.org/badge/state/pytition)
+![维护状态](https://apps.yunohost.org/badge/maintained/pytition)
 
 [![使用 YunoHost 安装 Pytition](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pytition)
 
@@ -29,7 +31,7 @@ Pytition is an application for privacy-friendly online petitions you can host on
 - You can export signatures in CSV format.
 
 
-**分发版本：** 2.8~ynh3
+**分发版本：** 2.8~ynh4
 
 **演示：** <https://demo.pytition.org>
 

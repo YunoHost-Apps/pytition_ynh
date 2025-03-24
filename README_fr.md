@@ -5,7 +5,9 @@ Il NE doit PAS être modifié à la main.
 
 # Pytition pour YunoHost
 
-[![Niveau d’intégration](https://dash.yunohost.org/integration/pytition.svg)](https://dash.yunohost.org/appci/app/pytition) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/pytition.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/pytition.maintain.svg)
+[![Niveau d’intégration](https://apps.yunohost.org/badge/integration/pytition)](https://ci-apps.yunohost.org/ci/apps/pytition/)
+![Statut du fonctionnement](https://apps.yunohost.org/badge/state/pytition)
+![Statut de maintenance](https://apps.yunohost.org/badge/maintained/pytition)
 
 [![Installer Pytition avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pytition)
 
@@ -29,7 +31,7 @@ Pytition permet d'héberger des pétitions respectueuses de la vie privée sur v
 - Vous pouvez exporter les signatures via CSV.
 
 
-**Version incluse :** 2.8~ynh3
+**Version incluse :** 2.8~ynh4
 
 **Démo :** <https://demo.pytition.org>
 
