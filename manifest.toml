@@ -1,4 +1,5 @@
 #:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
 packaging_format = 2
 
 id = "pytition"
@@ -6,7 +7,7 @@ name = "Pytition"
 description.en = "Host privacy-friendly online petitions"
 description.fr = "Hébergez des pétitions en ligne respectueuses de la vie privée"
 
-version = "2.8~ynh3"
+version = "2.8~ynh4"
 
 maintainers = ["Salamandar"]
 
@@ -21,8 +22,11 @@ code = "https://github.com/pytition/Pytition"
 yunohost = ">= 11.1.18"
 architectures = "all"
 multi_instance = true
+
 ldap = false
+
 sso = false
+
 disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
