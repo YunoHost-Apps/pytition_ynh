@@ -68,6 +68,8 @@ pushd "$install_dir"
 popd
 
 chown -R $app:www-data "$install_dir/static"
+chown -R $app:www-data "$install_dir/mediaroot"
+chown -R $app:www-data "$install_dir/pytition"
 
 #=================================================
 # SETUP SYSTEMD
