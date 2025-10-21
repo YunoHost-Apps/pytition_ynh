@@ -66,6 +66,7 @@ chown $app:$app "$install_dir/uwsgi.yaml"
 ynh_script_progression "Running app configuration..."
 
 pushd "$install_dir"
+    export DJANGO_SETTINGS_MODULE=pytition.settings.config
 	$install_dir/venv/bin/python3 "$install_dir/pytition/pytition/manage.py" migrate
 	$install_dir/venv/bin/python3 "$install_dir/pytition/pytition/manage.py" collectstatic
 	$install_dir/venv/bin/python3 "$install_dir/pytition/pytition/manage.py" compilemessages
