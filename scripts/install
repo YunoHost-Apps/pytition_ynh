@@ -65,17 +65,12 @@ chown $app:$app "$install_dir/uwsgi.yaml"
 #=================================================
 ynh_script_progression "Running app configuration..."
 
-ynh_exec_as_app bash -c "
-    set +o nounset
-    source '$install_dir/venv/bin/activate'
-    set -o nounset
-    cd '$install_dir/pytition/pytition'
-    export DJANGO_SETTINGS_MODULE=pytition.settings.config
-    python3 manage.py migrate
-    python3 manage.py collectstatic
-    python3 manage.py compilemessages
-    DJANGO_SUPERUSER_PASSWORD='$password' python3 manage.py createsuperuser --noinput --username $admin --email $email
-"
+pushd "$install_dir"
+	$install_dir/venv/bin/python3 "$install_dir/pytition/pytition/manage.py" migrate
+	$install_dir/venv/bin/python3 "$install_dir/pytition/pytition/manage.py" collectstatic
+	$install_dir/venv/bin/python3 "$install_dir/pytition/pytition/manage.py" compilemessages
+	DJANGO_SUPERUSER_PASSWORD='$password' $install_dir/venv/bin/python3 "$install_dir/pytition/pytition/manage.py" createsuperuser --noinput --username $admin --email $email
+popd
 
 chmod 750 "$install_dir/static"
 chown -R $app:www-data "$install_dir/static"
