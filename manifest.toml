@@ -80,7 +80,7 @@ ram.runtime = "50M"
     admin.allowed = "admins"
 
     [resources.apt]
-    packages = "mariadb-server python3 virtualenv gettext libzip-dev libssl-dev default-libmysqlclient-dev uwsgi uwsgi-plugin-python3 python3-uwsgidecorators"
+    packages = "mariadb-server python3 virtualenv gettext libzip-dev libssl-dev default-libmysqlclient-dev uwsgi uwsgi-plugin-python3 python3-uwsgidecorators python3-venv"
 
     [resources.database]
     type = "mysql"
