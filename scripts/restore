@@ -40,7 +40,11 @@ ynh_script_progression "Restoring the logrotate configuration..."
 
 mkdir -p "/var/log/$app"
 touch "/var/log/$app/$app.log"
+touch "/var/log/$app/$app--uwsgi.log"
+chown -R $app: "/var/log/$app"
+
 ynh_restore "/etc/logrotate.d/$app"
+
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
