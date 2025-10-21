@@ -64,7 +64,6 @@ pushd "$install_dir"
 	$install_dir/venv/bin/python3 "$install_dir/pytition/pytition/manage.py" migrate
 	$install_dir/venv/bin/python3 "$install_dir/pytition/pytition/manage.py" collectstatic
 	$install_dir/venv/bin/python3 "$install_dir/pytition/pytition/manage.py" compilemessages
-	DJANGO_SUPERUSER_PASSWORD='$password' $install_dir/venv/bin/python3 "$install_dir/pytition/pytition/manage.py" createsuperuser --noinput --username $admin --email $email
 popd
 
 chown -R $app:www-data "$install_dir/static"
