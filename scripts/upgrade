@@ -35,7 +35,7 @@ ynh_script_progression "Installing python dependencies..."
 
 if ynh_app_upgrading_from_version_before 2.8.1~ynh2
 then
-   chown -R $app:$app "$install_dir"
+   chown -R $app:www-data "$install_dir"
 fi
 
 pushd "$install_dir"
