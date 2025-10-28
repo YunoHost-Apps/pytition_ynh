@@ -19,13 +19,12 @@ admindoc = "https://pytition.readthedocs.io/en/latest/"
 code = "https://github.com/pytition/Pytition"
 
 [integration]
-yunohost = ">= 11.2.18"
+yunohost = ">= 12.1.17"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
 ldap = false
-
 sso = false
 
 disk = "50M"

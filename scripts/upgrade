@@ -13,25 +13,15 @@ ynh_systemctl --service=$app --action="stop"
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-
 ynh_script_progression "Upgrading source files..."
 
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir/pytition"
 
 #=================================================
-# NGINX CONFIGURATION
-#=================================================
-ynh_script_progression "Upgrading NGINX web server configuration..."
-
-# Create a dedicated NGINX config
-ynh_config_add_nginx
-
-#=================================================
 # INSTALL PYTHON DEPENDENCIES
 #=================================================
 ynh_script_progression "Installing python dependencies..."
-
 
 if ynh_app_upgrading_from_version_before 2.8.1~ynh2
 then
@@ -81,23 +71,14 @@ chown -R $app:www-data "$install_dir/pytition"
 #=================================================
 ynh_script_progression "Upgrading systemd configuration..."
 
+ynh_config_add_nginx
+
 # Create a dedicated systemd config
 ynh_config_add_systemd
 
-#=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression "Upgrading logrotate configuration..."
-
-# Use logrotate to manage app-specific logfile(s)
-ynh_config_add_logrotate
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression "Integrating service in YunoHost..."
-
 yunohost service add $app --description="Pytition uWSGI app $app" --log="/var/log/$app/$app.log"
+
+ynh_config_add_logrotate
 
 #=================================================
 # START SYSTEMD SERVICE
