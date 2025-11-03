@@ -16,5 +16,5 @@ test_format = 1.0
     # Commits to test upgrade from
     # -------------------------------
 
-    # test_upgrade_from.ea9cd8f526b2ac6f972c66a73b340266a1c966bc.name = "Upgrade from 2.5.1"
-    test_upgrade_from.3dd9955ee553b42ff992f6f45c5b19a89fb39fd0.name = "Upgrade from 2.8~ynh3"
+    test_upgrade_from.3dd9955ee553b42ff992f6f45c5b19a89fb39fd0.name = "2.8~ynh3"
+    test_upgrade_from.cfda1553a6758a0aca6c89aabe6256efac0f13df.name = "Helpers v1"
